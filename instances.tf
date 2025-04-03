@@ -17,7 +17,7 @@ resource "aws_instance" "webservers" {
   for_each = local.instance_configs
 
   ami           = "ami-084568db4383264d4"
-  instance_type = coalesce(var.instance_type, "t3.micro")
+  instance_type = coalesce(var.instance_type, "t3.micro")# using the coalesce funtion
 
   vpc_security_group_ids = [aws_security_group.public_security_group.id]
   subnet_id              = each.value.subnet_id
